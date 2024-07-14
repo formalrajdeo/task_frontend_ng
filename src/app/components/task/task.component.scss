@@ -1,0 +1,84 @@
+.task_container {
+    min-height: 80vh;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    .task_add {
+        margin-bottom: 20px;
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+            input[type="text"],
+            select {
+                flex: 1;
+                padding: 10px;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-bottom: 10px; // Updated margin for spacing
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+
+                &:hover {
+                    background-color: #0056b3;
+                }
+            }
+        }
+    }
+
+    .task_list {
+        .p-table {
+            width: 100%; // Ensures table takes full width
+
+            .p-datatable-header {
+                background-color: #f8f9fa; // Light background for header
+            }
+
+            .p-datatable-thead {
+                th {
+                    padding: 10px;
+                    text-align: left;
+                    border-bottom: 2px solid #ccc; // Adds a border under header
+                }
+            }
+
+            .p-datatable-tbody {
+                tr {
+                    &:hover {
+                        background-color: #f1f1f1; // Highlight row on hover
+                    }
+
+                    td {
+                        padding: 10px;
+                        border-bottom: 1px solid #ddd; // Adds border between rows
+                    }
+
+                    .task_list_action {
+                        button {
+                            padding: 5px 10px; // Smaller padding for action buttons
+                            background-color: #007bff;
+
+                            &:hover {
+                                background-color: #0056b3;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

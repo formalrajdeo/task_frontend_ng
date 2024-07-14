@@ -1,0 +1,43 @@
+<div class="task_container">
+    <div class="task_add">
+        <form (submit)="onSubmit($event)">
+            <input type="text" name="title" id="title" [(ngModel)]="newTask.title" placeholder="Enter task title">
+            <input type="text" name="description" id="description" [(ngModel)]="newTask.description"
+                placeholder="Enter task description">
+            <select name="status" id="status" [(ngModel)]="newTask.status">
+                <option value="todo">Todo</option>
+                <option value="in-progress">In Progress</option>
+                <option value="done">Done</option>
+            </select>
+            <button type="submit">{{ isNewTask ? 'Add' : 'Update' }}</button>
+        </form>
+    </div>
+    <div class="task_list">
+        <p-table [value]="(tasks$ | async) ?? []" [rows]="10" [paginator]="true" [responsive]="true"
+            [sortMode]="'multiple'">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="title">Title <p-sortIcon [field]="'title'"></p-sortIcon></th>
+                    <th pSortableColumn="description">Description <p-sortIcon [field]="'description'"></p-sortIcon></th>
+                    <th pSortableColumn="status">Status <p-sortIcon [field]="'status'"></p-sortIcon></th>
+                    <th>Actions</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-task>
+                <tr>
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.description }}</td>
+                    <td>{{ task.status }}</td>
+                    <td>
+                        <div class="task_list_action">
+                            <button (click)="editTask(task)">Edit</button>
+                            <button (click)="deleteTask(task)">Delete</button>
+                            <button (click)="viewTaskDetails(task)">View</button>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </div>
+</div>
